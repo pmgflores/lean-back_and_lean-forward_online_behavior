@@ -1,0 +1,15 @@
+# R specific files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# renv
+renv/library/
+renv/local/
+renv/lock/
+renv/python/
+renv/staging/
+
+# html
+*.html
