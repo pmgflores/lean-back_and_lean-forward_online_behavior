@@ -367,7 +367,7 @@ ggarrange(valence_JB, valence_JJ,
           ncol = 2, nrow = 3, common.legend = TRUE, legend="bottom")
 ```
 
-![](C:\Users\pmflo\OneDrive\Pablo%20Flores%20Bautista\UCDavis\PhD\Papers\2020%20Lean_github\lean-back_and_lean-forward_online_behavior\output\Supplemental_Material_1_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](C:\Users\pmflo\OneDrive\PABLOF~1\UCDavis\PhD\Papers\2020LE~1_github\LEAN-B~1\output\SUPPLE~1/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 #### 3.8) Manuscript Figure 2: Cohen’s d effect sizes for analysis of valence
 
@@ -408,7 +408,7 @@ ggplot(val_cohens, aes(x = valence, y = cases, color = pos_neg, label = valence)
   theme_bw()
 ```
 
-![](C:\Users\pmflo\OneDrive\Pablo%20Flores%20Bautista\UCDavis\PhD\Papers\2020%20Lean_github\lean-back_and_lean-forward_online_behavior\output\Supplemental_Material_1_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](C:\Users\pmflo\OneDrive\PABLOF~1\UCDavis\PhD\Papers\2020LE~1_github\LEAN-B~1\output\SUPPLE~1/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ### 4) Emotions analysis
 
@@ -1261,7 +1261,7 @@ ggarrange(fear_JB, anger_JB, disgust_JB, sadness_JB, joy_JB,
           ncol = 5, nrow = 6, common.legend = TRUE, legend="bottom")
 ```
 
-![](C:\Users\pmflo\OneDrive\Pablo%20Flores%20Bautista\UCDavis\PhD\Papers\2020%20Lean_github\lean-back_and_lean-forward_online_behavior\output\Supplemental_Material_1_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](C:\Users\pmflo\OneDrive\PABLOF~1\UCDavis\PhD\Papers\2020LE~1_github\LEAN-B~1\output\SUPPLE~1/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 #### 4.8) Manuscript Figure 3: Cohen’s d effect sizes for analysis of emotions
 
@@ -1272,4 +1272,4 @@ ggarrange(efsz_JB$effectsize.plot, efsz_JJ$effectsize.plot,
           ncol = 2, nrow = 3, common.legend = TRUE, legend="bottom")
 ```
 
-![](C:\Users\pmflo\OneDrive\Pablo%20Flores%20Bautista\UCDavis\PhD\Papers\2020%20Lean_github\lean-back_and_lean-forward_online_behavior\output\Supplemental_Material_1_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](C:\Users\pmflo\OneDrive\PABLOF~1\UCDavis\PhD\Papers\2020LE~1_github\LEAN-B~1\output\SUPPLE~1/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
