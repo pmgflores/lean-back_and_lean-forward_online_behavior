@@ -10,10 +10,10 @@ Flores, P. M. & Hilbert, M. (2023). Lean-back and lean-forward online behaviors:
 ├── data/                   # Input datasets
 ├── scripts/               
 │   ├── functions/         # R function files (.R)
-│   └── rmd/               # R Markdown files (.Rmd)
-├── output/                # Generated results
+│   └── rmd/               # R Markdown files (.Rmd) and .md files with results
 ├── renv/                  # R environment management
 ├── .Rprofile             # R profile configuration
+├── lean[...].Rproj       # R project file
 └── renv.lock             # Package version lockfile
 ```
 
