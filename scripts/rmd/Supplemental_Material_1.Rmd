@@ -1,0 +1,473 @@
+---
+title: "Supplemental Material Part 1"
+output:
+    html_document:
+      default: true
+    md_document:
+      variant: gfm 
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = here::here("output"),
+      output_format = "all"
+    )
+  })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1) Import data
+
+Importing the data for the analysis
+
+```{r}
+
+#library here uses the base of the R-project as initial directory
+#JB stands for Judge Barrett
+case_JB <- read.csv(here::here("data", "JudgeBarrettRTQT_R.csv"), header = TRUE)
+
+#JJ stands for Judge Jackson
+case_JJ <- read.csv(here::here("data", "JudgeJacksonRTQT_R.csv"), header = TRUE)
+
+#LA stands for LA earthquake
+case_LA <- read.csv(here::here("data", "LAearthquakeRTQT_R.csv"), header = TRUE)
+
+#NZ stands for New Zealand earthquake
+case_NZ <- read.csv(here::here("data", "NZearthquakeRTQT_R.csv"), header = TRUE)
+
+#N20 stands for NBA 2020 finals
+case_N20 <- read.csv(here::here("data", "NBAFinals20RTQT_R.csv"), header = TRUE)
+
+#N21 stands for NBA 2021 finals
+case_N21 <- read.csv(here::here("data", "NBAFinals21RTQT_R.csv"), header = TRUE)
+
+```
+
+### 2) Functions for the analysis
+
+Import the set of functions used for the analysis from R script "functions_1.R"
+
+```{r}
+
+sys.source(here::here("scripts", "functions", "functions_1.R"), envir = knitr::knit_global())
+
+```
+
+### 3) Sentiment analysis
+
+#### 3.1) Judge Barrett case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the valence of lean-back and lean-forward tweets.
+
+```{r}
+
+#Histogram
+valence_JB <- create.valence.plot(case_JB, plot_title = "JB emotional valence")
+
+#Descriptive statistics
+psych::describeBy(case_JB$sent_score, case_JB$referenced_tweets_type)
+
+#Test the difference in valence
+t.test(data = case_JB, sent_score ~ referenced_tweets_type)
+
+#Effect size Cohen's d
+cn_va_JB <- effectsize::cohens_d(case_JB[which(case_JB$referenced_tweets_type != 'retweeted'), "sent_score"],
+                                 case_JB[which(case_JB$referenced_tweets_type == 'retweeted'), "sent_score"])
+cn_va_JB
+
+```
+
+#### 3.2) Judge Jackson case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the valence of lean-back and lean-forward tweets.
+
+```{r}
+
+#Histogram
+valence_JJ <- create.valence.plot(case_JJ, plot_title = "JJ emotional valence")
+
+#Descriptive statistics
+psych::describeBy(case_JJ$sent_score, case_JJ$referenced_tweets_type)
+
+#Test the difference in 
+t.test(data = case_JJ, sent_score ~ referenced_tweets_type)
+
+#Effect size Cohen's d
+cn_va_JJ <- effectsize::cohens_d(case_JJ[which(case_JJ$referenced_tweets_type != 'retweeted'), "sent_score"],
+                                 case_JJ[which(case_JJ$referenced_tweets_type == 'retweeted'), "sent_score"])
+cn_va_JJ
+
+```
+
+#### 3.3) LA earthquake case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the valence of lean-back and lean-forward tweets.
+
+```{r}
+
+#Histogram
+valence_LA <- create.valence.plot(case_LA, plot_title = "LA emotional valence")
+
+#Descriptive statistics
+psych::describeBy(case_LA$sent_score, case_LA$referenced_tweets_type)
+
+#Test the difference in 
+t.test(data = case_LA, sent_score ~ referenced_tweets_type)
+
+#Effect size Cohen's d
+cn_va_LA <- effectsize::cohens_d(case_LA[which(case_LA$referenced_tweets_type != 'retweeted'), "sent_score"],
+                                 case_LA[which(case_LA$referenced_tweets_type == 'retweeted'), "sent_score"])
+cn_va_LA
+
+```
+
+#### 3.4) NZ earthquake case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the valence of lean-back and lean-forward tweets.
+
+```{r}
+
+#Histogram
+valence_NZ <- create.valence.plot(case_NZ, plot_title = "NZ emotional valence")
+
+#Descriptive statistics
+psych::describeBy(case_NZ$sent_score, case_NZ$referenced_tweets_type)
+
+#Test the difference in 
+t.test(data = case_NZ, sent_score ~ referenced_tweets_type)
+
+#Effect size Cohen's d
+cn_va_NZ <- effectsize::cohens_d(case_NZ[which(case_NZ$referenced_tweets_type != 'retweeted'), "sent_score"],
+                                 case_NZ[which(case_NZ$referenced_tweets_type == 'retweeted'), "sent_score"])
+cn_va_NZ
+
+```
+
+#### 3.5) NBA 2020 finals case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the valence of lean-back and lean-forward tweets.
+
+```{r}
+
+#Histogram
+valence_N20 <- create.valence.plot(case_N20, plot_title = "N20 emotional valence")
+
+#Descriptive statistics
+psych::describeBy(case_N20$sent_score, case_N20$referenced_tweets_type)
+
+#Test the difference in 
+t.test(data = case_N20, sent_score ~ referenced_tweets_type)
+
+#Effect size Cohen's d
+cn_va_N20 <- effectsize::cohens_d(case_N20[which(case_N20$referenced_tweets_type != 'retweeted'), "sent_score"],
+                                  case_N20[which(case_N20$referenced_tweets_type == 'retweeted'), "sent_score"])
+cn_va_N20
+
+```
+
+#### 3.6) NBA 2021 finals case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the valence of lean-back and lean-forward tweets.
+
+```{r}
+
+#Histogram
+valence_N21 <- create.valence.plot(case_N21, plot_title = "N21 emotional valence")
+
+#Descriptive statistics
+psych::describeBy(case_N21$sent_score, case_N21$referenced_tweets_type)
+
+#Test the difference in 
+t.test(data = case_N21, sent_score ~ referenced_tweets_type)
+
+#Effect size Cohen's d
+cn_va_N21 <- effectsize::cohens_d(case_N21[which(case_N21$referenced_tweets_type != 'retweeted'), "sent_score"],
+                                  case_N21[which(case_N21$referenced_tweets_type == 'retweeted'), "sent_score"])
+cn_va_N21
+
+```
+#### 3.7) Figure SM 1: Distribution of emotional valence
+
+Figure with the distribution of valence for lean-back and lean-forward tweets in each case.
+
+```{r}
+#Plot of the five emotions
+library(ggpubr)
+
+ggarrange(valence_JB, valence_JJ, 
+          valence_NZ, valence_LA,
+          valence_N20, valence_N21,
+          ncol = 2, nrow = 3, common.legend = TRUE, legend="bottom")
+
+```
+
+#### 3.8) Manuscript Figure 2: Cohen's d effect sizes for analysis of valence
+
+```{r}
+
+valence <- c(cn_va_JB$Cohens_d, cn_va_JJ$Cohens_d, cn_va_NZ$Cohens_d, #careful here with the order
+             cn_va_LA$Cohens_d, cn_va_N20$Cohens_d, cn_va_N21$Cohens_d)
+
+val_low <- c(cn_va_JB$CI_low, cn_va_JJ$CI_low, cn_va_NZ$CI_low, #careful here with the order
+             cn_va_LA$CI_low, cn_va_N20$CI_low, cn_va_N21$CI_low)
+
+val_high <- c(cn_va_JB$CI_high, cn_va_JJ$CI_high, cn_va_NZ$CI_high, #careful here with the order
+              cn_va_LA$CI_high, cn_va_N20$CI_high, cn_va_N21$CI_high)
+
+cases <- c('JB', 'JJ', 'NZ', 'LA', 'N20', 'N21')
+
+
+pos_neg <- valence > 0
+
+
+val_cohens <- data.frame(cases, valence, pos_neg, val_low, val_high)
+val_cohens$valence <- round(as.numeric(val_cohens$valence), digits = 2)
+val_cohens$val_low <- round(as.numeric(val_cohens$val_low), digits = 2)
+val_cohens$val_high <- round(as.numeric(val_cohens$val_high), digits = 2)
+
+#Definition of the order to plot stages and emotions
+val_cohens$cases <- factor(val_cohens$cases, levels=c('JB', 'JJ', 'NZ', 'LA', 'N20', 'N21'))
+
+ggplot(val_cohens, aes(x = valence, y = cases, color = pos_neg, label = valence)) +
+  #geom_segment(aes(x = 0, xend = valence, yend = cases), lty=2) +
+  geom_point(shape=18, size=3) +
+  geom_errorbar(aes(xmin=val_low, xmax=val_high), width=.2) +
+  geom_vline(xintercept = 0) +
+  geom_text(nudge_y = 0.2, size = 3) +
+  guides(color='none') +
+  scale_colour_manual(values = c('gray60', 'black')) +
+  xlim(-0.8, 0.8) +
+  labs(x = expression(paste("Cohen's ", italic("d ")))) +
+  theme_bw()
+  
+
+```
+
+### 4) Emotions analysis
+
+#### 4.1) Judge Barrett case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the emotions of lean-back and lean-forward tweets.
+
+```{r}
+
+#Emotions distribution plots
+fear_JB <- create.emotion.plot(case_JB, emotion = "fear", plot_title = "JB fear")
+
+anger_JB <- create.emotion.plot(case_JB, emotion = "anger", plot_title = "JB anger")
+
+disgust_JB <- create.emotion.plot(case_JB, emotion = "disgust", plot_title = "JB disgust")
+
+sadness_JB <- create.emotion.plot(case_JB, emotion = "sadness", plot_title = "JB sadness")
+
+joy_JB <- create.emotion.plot(case_JB, emotion = "joy", plot_title = "JB joy")
+
+#Descriptive statistics
+psych::describeBy(case_JB[10:14], case_JB$referenced_tweets_type)
+
+#t-test for emotions
+t.test(data = case_JB, fear ~ referenced_tweets_type)
+t.test(data = case_JB, anger ~ referenced_tweets_type)
+t.test(data = case_JB, disgust ~ referenced_tweets_type)
+t.test(data = case_JB, sadness ~ referenced_tweets_type)
+t.test(data = case_JB, joy ~ referenced_tweets_type)
+
+#Effect size Cohen's d for emotions
+efsz_JB <- create.effectsize.tableplot(case_JB, plot_title = "(a) JB")
+efsz_JB$effectsize.table
+
+```
+
+#### 4.2) Judge Jackson case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the emotions of lean-back and lean-forward tweets.
+
+```{r}
+
+#Emotions distribution plots
+fear_JJ <- create.emotion.plot(case_JJ, emotion = "fear", plot_title = "JJ fear")
+
+anger_JJ <- create.emotion.plot(case_JJ, emotion = "anger", plot_title = "JJ anger")
+
+disgust_JJ <- create.emotion.plot(case_JJ, emotion = "disgust", plot_title = "JJ disgust")
+
+sadness_JJ <- create.emotion.plot(case_JJ, emotion = "sadness", plot_title = "JJ sadness")
+
+joy_JJ <- create.emotion.plot(case_JJ, emotion = "joy", plot_title = "JJ joy")
+
+#Descriptive statistics
+psych::describeBy(case_JJ[10:14], case_JJ$referenced_tweets_type)
+
+#t-test for emotions
+t.test(data = case_JJ, fear ~ referenced_tweets_type)
+t.test(data = case_JJ, anger ~ referenced_tweets_type)
+t.test(data = case_JJ, disgust ~ referenced_tweets_type)
+t.test(data = case_JJ, sadness ~ referenced_tweets_type)
+t.test(data = case_JJ, joy ~ referenced_tweets_type)
+
+#Effect size Cohen's d for emotions
+efsz_JJ <- create.effectsize.tableplot(case_JJ, plot_title = "(b) JJ")
+efsz_JJ$effectsize.table
+
+```
+
+#### 4.3) LA earthquake case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the emotions of lean-back and lean-forward tweets.
+
+```{r}
+
+#Emotions distribution plots
+fear_LA <- create.emotion.plot(case_LA, emotion = "fear", plot_title = "LA fear")
+
+anger_LA <- create.emotion.plot(case_LA, emotion = "anger", plot_title = "LA anger")
+
+disgust_LA <- create.emotion.plot(case_LA, emotion = "disgust", plot_title = "LA disgust")
+
+sadness_LA <- create.emotion.plot(case_LA, emotion = "sadness", plot_title = "LA sadness")
+
+joy_LA <- create.emotion.plot(case_LA, emotion = "joy", plot_title = "LA joy")
+
+#Descriptive statistics
+psych::describeBy(case_LA[10:14], case_LA$referenced_tweets_type)
+
+#t-test for emotions
+t.test(data = case_LA, fear ~ referenced_tweets_type)
+t.test(data = case_LA, anger ~ referenced_tweets_type)
+t.test(data = case_LA, disgust ~ referenced_tweets_type)
+t.test(data = case_LA, sadness ~ referenced_tweets_type)
+t.test(data = case_LA, joy ~ referenced_tweets_type)
+
+#Effect size Cohen's d for emotions
+efsz_LA <- create.effectsize.tableplot(case_LA, plot_title = "(c) LA")
+efsz_LA$effectsize.table
+
+```
+
+#### 4.4) NZ earthquake case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the emotions of lean-back and lean-forward tweets.
+
+```{r}
+
+#Emotions distribution plots
+fear_NZ <- create.emotion.plot(case_NZ, emotion = "fear", plot_title = "NZ fear")
+
+anger_NZ <- create.emotion.plot(case_NZ, emotion = "anger", plot_title = "NZ anger")
+
+disgust_NZ <- create.emotion.plot(case_NZ, emotion = "disgust", plot_title = "NZ disgust")
+
+sadness_NZ <- create.emotion.plot(case_NZ, emotion = "sadness", plot_title = "NZ sadness")
+
+joy_NZ <- create.emotion.plot(case_NZ, emotion = "joy", plot_title = "NZ joy")
+
+#Descriptive statistics
+psych::describeBy(case_NZ[10:14], case_NZ$referenced_tweets_type)
+
+#t-test for emotions
+t.test(data = case_NZ, fear ~ referenced_tweets_type)
+t.test(data = case_NZ, anger ~ referenced_tweets_type)
+t.test(data = case_NZ, disgust ~ referenced_tweets_type)
+t.test(data = case_NZ, sadness ~ referenced_tweets_type)
+t.test(data = case_NZ, joy ~ referenced_tweets_type)
+
+#Effect size Cohen's d for emotions
+efsz_NZ <- create.effectsize.tableplot(case_NZ, plot_title = "(d) NZ")
+efsz_NZ$effectsize.table
+
+```
+
+#### 4.5) NBA 2020 finals case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the emotions of lean-back and lean-forward tweets.
+
+```{r}
+
+#Emotions distribution plots
+fear_N20 <- create.emotion.plot(case_N20, emotion = "fear", plot_title = "N20 fear")
+
+anger_N20 <- create.emotion.plot(case_N20, emotion = "anger", plot_title = "N20 anger")
+
+disgust_N20 <- create.emotion.plot(case_N20, emotion = "disgust", plot_title = "N20 disgust")
+
+sadness_N20 <- create.emotion.plot(case_N20, emotion = "sadness", plot_title = "N20 sadness")
+
+joy_N20 <- create.emotion.plot(case_N20, emotion = "joy", plot_title = "N20 joy")
+
+#Descriptive statistics
+psych::describeBy(case_N20[10:14], case_N20$referenced_tweets_type)
+
+#t-test for emotions
+t.test(data = case_N20, fear ~ referenced_tweets_type)
+t.test(data = case_N20, anger ~ referenced_tweets_type)
+t.test(data = case_N20, disgust ~ referenced_tweets_type)
+t.test(data = case_N20, sadness ~ referenced_tweets_type)
+t.test(data = case_N20, joy ~ referenced_tweets_type)
+
+#Effect size Cohen's d for emotions
+efsz_N20 <- create.effectsize.tableplot(case_N20, plot_title = "(e) N20")
+efsz_N20$effectsize.table
+
+```
+
+#### 4.6) NBA 2021 finals case
+
+This analysis contains descriptive statistics, t-test, and effect sizes comparisons for the emotions of lean-back and lean-forward tweets.
+
+```{r}
+
+#Emotions distribution plots
+fear_N21 <- create.emotion.plot(case_N21, emotion = "fear", plot_title = "N21 fear")
+
+anger_N21 <- create.emotion.plot(case_N21, emotion = "anger", plot_title = "N21 anger")
+
+disgust_N21 <- create.emotion.plot(case_N21, emotion = "disgust", plot_title = "N21 disgust")
+
+sadness_N21 <- create.emotion.plot(case_N21, emotion = "sadness", plot_title = "N21 sadness")
+
+joy_N21 <- create.emotion.plot(case_N21, emotion = "joy", plot_title = "N21 joy")
+
+#Descriptive statistics
+psych::describeBy(case_N21[10:14], case_N21$referenced_tweets_type)
+
+#t-test for emotions
+t.test(data = case_N21, fear ~ referenced_tweets_type)
+t.test(data = case_N21, anger ~ referenced_tweets_type)
+t.test(data = case_N21, disgust ~ referenced_tweets_type)
+t.test(data = case_N21, sadness ~ referenced_tweets_type)
+t.test(data = case_N21, joy ~ referenced_tweets_type)
+
+#Effect size Cohen's d for emotions
+efsz_N21 <- create.effectsize.tableplot(case_N21, plot_title = "(f) N21")
+efsz_N21$effectsize.table
+
+```
+
+#### 4.7) Figure SM 2: Distribution of emotions by case
+
+Figure with the distribution of emotions for lean-back and lean-forward tweets in each case.
+
+```{r, fig.height=10, fig.width=12}
+
+ggarrange(fear_JB, anger_JB, disgust_JB, sadness_JB, joy_JB,
+          fear_JJ, anger_JJ, disgust_JJ, sadness_JJ, joy_JJ,
+          fear_LA, anger_LA, disgust_LA, sadness_LA, joy_LA,
+          fear_NZ, anger_NZ, disgust_NZ, sadness_NZ, joy_NZ,
+          fear_N20, anger_N20, disgust_N20, sadness_N20, joy_N20,
+          fear_N21, anger_N21, disgust_N21, sadness_N21, joy_N21,
+          ncol = 5, nrow = 6, common.legend = TRUE, legend="bottom")
+
+```
+
+#### 4.8) Manuscript Figure 3: Cohen's d effect sizes for analysis of emotions
+
+```{r, fig.height=10, fig.width=12}
+
+ggarrange(efsz_JB$effectsize.plot, efsz_JJ$effectsize.plot,
+          efsz_LA$effectsize.plot, efsz_NZ$effectsize.plot,
+          efsz_N20$effectsize.plot, efsz_N21$effectsize.plot,
+          ncol = 2, nrow = 3, common.legend = TRUE, legend="bottom")
+
+```
