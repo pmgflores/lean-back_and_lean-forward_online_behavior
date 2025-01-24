@@ -1,17 +1,8 @@
 ---
 title: "Supplemental Material Part 2"
 output:
-    html_document:
-      default: true
-    md_document: 
-      variant: gfm
-knit: (function(input, ...) {
-    rmarkdown::render(
-      input,
-      output_dir = here::here("output"),
-      output_format = "all"
-    )
-  })
+  md_document:
+    variant: gfm
 ---
 
 ```{r setup, include=FALSE}

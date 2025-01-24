@@ -1,26 +1,13 @@
 ---
 title: "Supplemental Material Part 1"
 output:
-  html_document:
-    default: true
   md_document:
     variant: gfm
-    pandoc_args: --webtex
-    path: figure-gfm
-knit: (function(input, ...) {
-    rmarkdown::render(
-      input,
-      output_dir = here::here("output"),
-      output_format = c("html_document", "md_document")
-    )
-  })
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = TRUE,
-  fig.path = "figure-gfm/",
-  dev = "png"
+  echo = TRUE
 )
 ```
 
